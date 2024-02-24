@@ -40,11 +40,12 @@ spec:
       port: 80
       targetPort: 80
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
   labels:
     app.kubernetes.io/managed-by: kargocd
   name: nginx
@@ -55,5 +56,7 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: nginx-service
-              servicePort: 80
+              service:
+                name: nginx-service
+                port:
+                  number: 80
