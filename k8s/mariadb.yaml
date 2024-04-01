@@ -2,28 +2,28 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
+  name: mariadb
 spec:
-  serviceName: mysql
+  serviceName: mariadb
   selector:
     matchLabels:
-      app: mysql
+      app: mariadb
   template:
     metadata:
       labels:
-        app: mysql
+        app: mariadb
     spec:
       containers:
-        - name: mysql
+        - name: mariadb
           # 여러분의 mariadb image 주소를 입력해주세요.
           image: mysql
           env:
             - name: TZ
               value: Asia/Seoul
-            - name: MYSQL_ROOT_PASSWORD
-              value: "0102"
-            - name: MYSQL_DATABASE
-              value: everyide
+            - name: MARIADB_ROOT_PASSWORD
+              value: "1234"
+            - name: MARIADB_DATABASE
+              value: krampoline
             - name: MYSQL_DISABLE_UPGRADE_BACKUP
               value: '1'
           volumeMounts:
@@ -49,11 +49,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mariadb
 spec:
   type: ClusterIP
   clusterIP: None # Headless
   selector:
-    app: mysql
+    app: mariadb
   ports:
     - port: 3306
