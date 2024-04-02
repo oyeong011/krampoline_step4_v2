@@ -21,7 +21,7 @@ spec:
               value: jdbc:mariadb://mariadb:3306/nalsee
           volumeMounts:
           - name: nalsee
-            mountPath: "/src/main/resources/application-kram.yml"
+            mountPath: "/home/gradle/project/src/main/resources/application-kram.yml"
           resources:
             requests:
               memory: 1Gi
