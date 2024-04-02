@@ -22,6 +22,7 @@ spec:
           volumeMounts:
           - name: nalsee
             mountPath: "/home/gradle/project/src/main/resources/application-kram.yml"
+            subPath: "application-kram.yml"
           resources:
             requests:
               memory: 1Gi
