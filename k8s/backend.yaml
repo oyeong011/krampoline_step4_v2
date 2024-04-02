@@ -30,7 +30,7 @@ spec:
           path: /api/test
           port: 8080
       volumes:
-      - nmae: nalsee
+      - name: nalsee
         secret:
         secretName: my-secret
 ---
