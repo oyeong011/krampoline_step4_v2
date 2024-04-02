@@ -33,7 +33,7 @@ spec:
       volumes:
       - name: nalsee
         secret:
-        secretName: my-secret
+          secretName: my-secret
 ---
 apiVersion: v1
 kind: Service
